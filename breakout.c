@@ -135,7 +135,6 @@ void initBricks(GWindow window)
     		add(window, grid);
     	}
     }
-   // return grid;
 }
 
 /**
@@ -144,7 +143,11 @@ void initBricks(GWindow window)
 GOval initBall(GWindow window)
 {
     // TODO
-    return NULL;
+    GOval ball = newGOval(WIDTH/2 - RADIUS, HEIGHT/2 - RADIUS, RADIUS * 2, RADIUS *2);
+    setColor(ball, "DARK_GRAY");
+    setFilled(ball, true);
+    add(window, ball);
+    return ball;
 }
 
 /**
