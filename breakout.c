@@ -104,7 +104,7 @@ int main(void)
             {
                 // ensure paddle follows top cursor
                 double x = getX(event) - PWIDTH / 2;
-                //setLocation(circle, x, y);
+                //setLocation(paddle, x, y);
                 setLocation(paddle, x, (HEIGHT - GAP));
             }
         }
@@ -118,12 +118,20 @@ int main(void)
             velocityX = -velocityX;
         }
         
-        if ((getY(ball) + RADIUS * 2 >= HEIGHT) || (getY(ball) <= 0))
+        if (getY(ball) <= 0)
         {
         	velocityY = -velocityY;
         }
         // linger before moving again
         pause(10);
+        
+        if (getY(ball) + RADIUS * 2 >= HEIGHT)
+        {
+        	lives--;
+        	setLocation(paddle,((WIDTH/2) - (PWIDTH/2)), (HEIGHT - GAP));
+        	setLocation(ball, WIDTH/2 - RADIUS, HEIGHT/2 - RADIUS);
+        	waitForClick();
+        }
         
         GObject object = detectCollision(window, ball);
         
