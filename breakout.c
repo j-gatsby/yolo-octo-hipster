@@ -36,9 +36,13 @@
 // lives
 #define LIVES 3 
 
-// paddle width
+// paddle dimensions
 #define PHEIGHT (HEIGHT/100)
 #define PWIDTH	(WIDTH/8)
+
+// brick dimensions
+#define BHEIGHT (HEIGHT/75)
+#define BWIDTH 	(WIDTH - (2 * (COLS)) / COLS)
 
 // prototypes
 void initBricks(GWindow window);
