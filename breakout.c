@@ -51,6 +51,7 @@ GRect initPaddle(GWindow window);
 GLabel initScoreboard(GWindow window);
 void updateScoreboard(GWindow window, GLabel label, int points);
 GObject detectCollision(GWindow window, GOval ball);
+void removeGWindow(GWindow window, GObject grid);
 
 int main(void)
 {
@@ -124,16 +125,19 @@ int main(void)
         
         GObject object = detectCollision(window, ball);
         
-        if (object == paddle)
+        if (object != NULL)
         {
-        	velocityY = -velocityY;
+		    if (object == paddle)
+		    {
+		    	velocityY = -velocityY;
+		    }
+		    
+		   else if (strcmp(getType(object), "GRect") == 0)
+		   {
+		    	removeGWindow(window, object);
+		    	velocityY = -velocityY;
+		   }
         }
-        
-       // if (strcmp(getType(object), "GRect") == 0)
-       // {
-       // 	
-       // }
-        
         
     }
 
