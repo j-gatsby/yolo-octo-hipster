@@ -78,6 +78,21 @@ int main(void)
     while (lives > 0 && bricks > 0)
     {
         // TODO
+         // check for mouse event
+        GEvent event = getNextEvent(MOUSE_EVENT);
+
+        // if we heard one
+        if (event != NULL)
+        {
+            // if the event was movement
+            if (getEventType(event) == MOUSE_MOVED)
+            {
+                // ensure paddle follows top cursor
+                double x = getX(event) - PWIDTH / 2;
+                //setLocation(circle, x, y);
+                setLocation(paddle, x, (HEIGHT - (HEIGHT/8)));
+            }
+        }
     }
 
     // wait for click before exiting
@@ -110,12 +125,12 @@ GOval initBall(GWindow window)
  */
 GRect initPaddle(GWindow window)
 {
-    // TODO
+    // DONE
     GRect paddle = newGRect(((WIDTH/2) - (PWIDTH/2)), (HEIGHT - (HEIGHT/8)), PWIDTH, PHEIGHT);
     setColor(paddle, "RED");
     setFilled(paddle, true);
     add(window, paddle);
-    return newGRect;
+    return paddle;
 }
 
 /**
