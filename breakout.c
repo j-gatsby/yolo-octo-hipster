@@ -21,6 +21,9 @@
 #define HEIGHT 600
 #define WIDTH 400
 
+// space above bricks and under paddle
+#define GAP (HEIGHT/8)
+
 // number of rows of bricks
 #define ROWS 5
 
@@ -90,7 +93,7 @@ int main(void)
                 // ensure paddle follows top cursor
                 double x = getX(event) - PWIDTH / 2;
                 //setLocation(circle, x, y);
-                setLocation(paddle, x, (HEIGHT - (HEIGHT/8)));
+                setLocation(paddle, x, (HEIGHT - GAP));
             }
         }
     }
@@ -126,7 +129,7 @@ GOval initBall(GWindow window)
 GRect initPaddle(GWindow window)
 {
     // DONE
-    GRect paddle = newGRect(((WIDTH/2) - (PWIDTH/2)), (HEIGHT - (HEIGHT/8)), PWIDTH, PHEIGHT);
+    GRect paddle = newGRect(((WIDTH/2) - (PWIDTH/2)), (HEIGHT - GAP), PWIDTH, PHEIGHT);
     setColor(paddle, "RED");
     setFilled(paddle, true);
     add(window, paddle);
