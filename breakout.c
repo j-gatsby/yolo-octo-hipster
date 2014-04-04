@@ -41,8 +41,8 @@
 #define PWIDTH	(WIDTH/8)
 
 // brick dimensions
-#define BHEIGHT (HEIGHT/75)
-#define BWIDTH 	(WIDTH - (2 * (COLS)) / COLS)
+#define BHEIGHT (HEIGHT/60)
+#define BWIDTH 	((WIDTH - (2 * (COLS))) / COLS)
 
 // prototypes
 void initBricks(GWindow window);
@@ -116,6 +116,18 @@ int main(void)
 void initBricks(GWindow window)
 {
     // TODO
+    for (int i = 0; i < ROWS; i++)
+    {
+    	for (int j = 0; j < COLS; j++)
+    	{
+    		GRect grid = newGRect((j * (BWIDTH + 2)) +1, (GAP + ((BHEIGHT + 2) * i)) + 2, BWIDTH, BHEIGHT);
+    		setColor(grid, "BLUE");
+    		setFilled(grid, false);
+    		
+    		add(window, grid);
+    	}
+    }
+   // return grid;
 }
 
 /**
