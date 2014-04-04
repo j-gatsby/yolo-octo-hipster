@@ -86,6 +86,8 @@ int main(void)
     double velocityX = drand48() + 1.25;
     double velocityY = drand48() + 1.25;
 
+    // wait for click before starting
+    waitForClick();
 	
     // keep playing until game over
     while (lives > 0 && bricks > 0)
