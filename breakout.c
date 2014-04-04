@@ -136,6 +136,8 @@ int main(void)
 		   {
 		    	removeGWindow(window, object);
 		    	velocityY = -velocityY;
+		    	bricks--;
+		    	points++;
 		   }
         }
         
