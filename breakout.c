@@ -105,38 +105,14 @@ int main(void)
         }
         
          // move ball along x-axis
-        //move(ball, velocity, 0);
+         //move(ball, dx, dy);
 
-        // bounce off right edge of window
-        if (getX(ball) + RADIUS * 2 >= WIDTH)
+        // bounce off edge of window
+        if ((getX(ball) + RADIUS * 2 >= WIDTH) || (getX(ball) <= 0))
         {
             velocity = -velocity;
         }
-
-        // bounce off left edge of window
-        else if (getX(ball) <= 0)
-        {
-            velocity = -velocity;
-        }
-
-        // linger before moving again
-        pause(10);
         
-         // move ball along y-axis
-        move(ball, 0, velocity);
-
-        // bounce off top of window
-        if (getY(ball) + RADIUS * 2 >= HEIGHT)
-        {
-            velocity = -velocity;
-        }
-
-        // bounce off bottom of window
-        else if (getY(ball) <= 0)
-        {
-            velocity = -velocity;
-        }
-
         // linger before moving again
         pause(10);
     }
