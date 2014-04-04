@@ -82,8 +82,10 @@ int main(void)
     int points = 0;
     
     // initial velocity
-    double velocity = 2.0;
+    double velocityX = drand48() + 1.25;
+    double velocityY = drand48() + 1.25;
 
+	
     // keep playing until game over
     while (lives > 0 && bricks > 0)
     {
@@ -104,15 +106,19 @@ int main(void)
             }
         }
         
-         // move ball along x-axis
-         //move(ball, dx, dy);
-
+        // add horizontal movement to ball
+		move(ball, velocityX, velocityY);
+		
         // bounce off edge of window
         if ((getX(ball) + RADIUS * 2 >= WIDTH) || (getX(ball) <= 0))
         {
-            velocity = -velocity;
+            velocityX = -velocityX;
         }
         
+        if ((getY(ball) + RADIUS * 2 >= HEIGHT || (getY(ball) <= 0)))
+        {
+        	velocityY = -velocityY;
+        }
         // linger before moving again
         pause(10);
     }
