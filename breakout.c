@@ -106,7 +106,7 @@ int main(void)
             }
         }
         
-        // add horizontal movement to ball
+        // add diagonal movement to ball
 		move(ball, velocityX, velocityY);
 		
         // bounce off edge of window
@@ -115,12 +115,26 @@ int main(void)
             velocityX = -velocityX;
         }
         
-        if ((getY(ball) + RADIUS * 2 >= HEIGHT || (getY(ball) <= 0)))
+        if ((getY(ball) + RADIUS * 2 >= HEIGHT) || (getY(ball) <= 0))
         {
         	velocityY = -velocityY;
         }
         // linger before moving again
         pause(10);
+        
+        GObject object = detectCollision(window, ball);
+        
+        if (object == paddle)
+        {
+        	velocityY = -velocityY;
+        }
+        
+       // if (strcmp(getType(object), "GRect") == 0)
+       // {
+       // 	
+       // }
+        
+        
     }
 
     // wait for click before exiting
