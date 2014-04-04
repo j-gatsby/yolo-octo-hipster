@@ -121,8 +121,16 @@ void initBricks(GWindow window)
     	for (int j = 0; j < COLS; j++)
     	{
     		GRect grid = newGRect((j * (BWIDTH + 2)) +1, (GAP + ((BHEIGHT + 2) * i)) + 2, BWIDTH, BHEIGHT);
-    		setColor(grid, "BLUE");
-    		setFilled(grid, false);
+    		if (((i+j)%2) == 1)
+    		{
+    			setColor(grid, "BLUE");
+    			setFilled(grid, true);
+    		}
+    		else 
+    		{
+    			setColor(grid, "BLACK");
+    			setFilled(grid, true);
+    		}
     		
     		add(window, grid);
     	}
