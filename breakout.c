@@ -31,7 +31,11 @@
 #define RADIUS 10
 
 // lives
-#define LIVES 3
+#define LIVES 3 
+
+// paddle width
+#define PHEIGHT (HEIGHT/100)
+#define PWIDTH	(WIDTH/8)
 
 // prototypes
 void initBricks(GWindow window);
@@ -59,7 +63,7 @@ int main(void)
     GRect paddle = initPaddle(window);
 
     // instantiate scoreboard, centered in middle of window, just above ball
-    GLabel label = initScoreboard(window);
+    GLabel label = initScoreboard(window); 
 
     // number of bricks initially
     int bricks = COLS * ROWS;
@@ -107,7 +111,11 @@ GOval initBall(GWindow window)
 GRect initPaddle(GWindow window)
 {
     // TODO
-    return NULL;
+    GRect paddle = newGRect(((WIDTH/2) - (PWIDTH/2)), (HEIGHT - (HEIGHT/8)), PWIDTH, PHEIGHT);
+    setColor(paddle, "RED");
+    setFilled(paddle, true);
+    add(window, paddle);
+    return newGRect;
 }
 
 /**
