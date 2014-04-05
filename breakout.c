@@ -108,6 +108,21 @@ int main(void)
             }
         }
         
+        // set paddle color as indicator of lives remaining 
+		if (lives == 3)
+		{
+			setColor(paddle, "GREEN");
+		}
+		else if (lives == 2)
+		{
+			setColor(paddle, "ORANGE");
+		}
+		else
+		{
+			setColor(paddle, "RED");
+		}
+		setFilled(paddle, true);
+        
         // add diagonal movement to ball
 		move(ball, velocityX, velocityY);
 		
@@ -236,7 +251,7 @@ GRect initPaddle(GWindow window)
 {
     // DONE
     GRect paddle = newGRect(((WIDTH/2) - (PWIDTH/2)), (HEIGHT - GAP), PWIDTH, PHEIGHT);
-    setColor(paddle, "RED");
+    setColor(paddle, "BLUE");
     setFilled(paddle, true);
     add(window, paddle);
     return paddle;
