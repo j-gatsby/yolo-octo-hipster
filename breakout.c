@@ -251,7 +251,7 @@ GLabel initScoreboard(GWindow window)
     double x, y;
     	
 	GLabel label = newGLabel("0");
-	setFont(label, "SansSerif-60");
+	setFont(label, "Monospaced-60");
 	setColor(label, "GRAY");
 	x = ((WIDTH) - getWidth(label)) / 2;
 	y = ((HEIGHT) - getHeight(label)) / 2;
