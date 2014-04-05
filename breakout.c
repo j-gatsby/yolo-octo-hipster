@@ -51,8 +51,6 @@ GRect initPaddle(GWindow window);
 GLabel initScoreboard(GWindow window);
 void updateScoreboard(GWindow window, GLabel label, int points);
 GObject detectCollision(GWindow window, GOval ball);
-void removeGWindow(GWindow window, GObject grid);
-void freeGObject(GObject gobj);
 
 int main(void)
 {
@@ -84,8 +82,8 @@ int main(void)
     int points = 0;
     
     // initial velocity
-    double velocityX = drand48() + 1.25;
-    double velocityY = drand48() + 1.25;
+    double velocityX = drand48() + 2;
+    double velocityY = drand48() + 2;
 
     // wait for click before starting
     waitForClick();
@@ -124,7 +122,7 @@ int main(void)
         	velocityY = -velocityY;
         }
         // linger before moving again
-        pause(10);
+        pause(50);
         
         if (getY(ball) + RADIUS * 2 >= HEIGHT)
         {
@@ -149,6 +147,10 @@ int main(void)
 		    	velocityY = -velocityY;
 		    	bricks--;
 		    	points++;
+		    	updateScoreboard(window, label, points);
+		    	printf("Points = %i\n", points);
+		    	printf("Bricks = %i\n", bricks);
+		    	printf("Lives  = %i\n\n", lives);
 		   }
         }
         
@@ -250,11 +252,11 @@ GLabel initScoreboard(GWindow window)
     	
 	GLabel label = newGLabel("0");
 	setFont(label, "SansSerif-60");
-	setColor(label, "LIGHT_GRAY");
+	setColor(label, "GRAY");
 	x = ((WIDTH) - getWidth(label)) / 2;
 	y = ((HEIGHT) - getHeight(label)) / 2;
-	add(window, label);
 	setLocation(label, x, y);
+	add(window, label);
     return label;
 }
 
@@ -264,7 +266,7 @@ GLabel initScoreboard(GWindow window)
 void updateScoreboard(GWindow window, GLabel label, int points)
 {
     // update label
-    char s[12];
+    char s[0];
     sprintf(s, "%i", points);
     setLabel(label, s);
 
