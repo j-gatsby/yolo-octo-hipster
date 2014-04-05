@@ -176,7 +176,7 @@ int main(void)
     	double x, y;
     	
     	GLabel gameover = newGLabel("YOU LOSE!!!");
-    	setFont(gameover, "SansSerif-48");
+    	setFont(gameover, "Monospaced-48");
     	setColor(gameover, "RED"),
     	x = (WIDTH - getWidth(gameover)) / 2;
     	y = (HEIGHT - getFontAscent(gameover)) / 2;
@@ -189,7 +189,7 @@ int main(void)
     	double x, y;
     	
     	GLabel gamewin = newGLabel("YOU WIN!!!");
-    	setFont(gamewin, "SansSerif-48");
+    	setFont(gamewin, "Monospaced-48");
     	setColor(gamewin, "GREEN");
     	x = (WIDTH - getWidth(gamewin)) / 2;
     	y = (HEIGHT - getFontAscent(gamewin)) / 2;
