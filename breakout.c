@@ -215,6 +215,7 @@ void initBricks(GWindow window)
     	for (int j = 0; j < COLS; j++)
     	{
     		GRect grid = newGRect((j * (BWIDTH + 2)) +1, (GAP + ((BHEIGHT + 2) * i)) + 2, BWIDTH, BHEIGHT);
+    		/* Checkerboard Pattern for Grid
     		if (((i+j)%2) == 1)
     		{
     			setColor(grid, "BLUE");
@@ -225,7 +226,32 @@ void initBricks(GWindow window)
     			setColor(grid, "BLACK");
     			setFilled(grid, true);
     		}
-    		
+    		*/
+    		if (i == 0)
+    		{
+    			setColor(grid, "RED");
+    			setFilled(grid, true);
+    		}
+    		else if (i == 1)
+    		{
+    			setColor(grid, "ORANGE");
+    			setFilled(grid, true);
+    		}
+    		else if (i == 2)
+    		{
+    			setColor(grid, "YELLOW");
+    			setFilled(grid, true);
+    		}
+    		else if (i == 3)
+    		{
+    			setColor(grid, "GREEN");
+    			setFilled(grid, true);
+    		}
+    		else
+    		{
+    			setColor(grid, "CYAN");
+    			setFilled(grid, true);
+    		}
     		add(window, grid);
     	}
     }
