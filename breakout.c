@@ -52,6 +52,7 @@ GLabel initScoreboard(GWindow window);
 void updateScoreboard(GWindow window, GLabel label, int points);
 GObject detectCollision(GWindow window, GOval ball);
 void removeGWindow(GWindow window, GObject grid);
+void freeGObject(GObject gobj);
 
 int main(void)
 {
@@ -152,7 +153,32 @@ int main(void)
         }
         
     }
+    
+    if (lives == 0)
+    {
+    	double x, y;
+    	
+    	GLabel gameover = newGLabel("YOU LOSE!!!");
+    	setFont(gameover, "SansSerif-48");
+    	setColor(gameover, "RED"),
+    	x = (WIDTH - getWidth(gameover)) / 2;
+    	y = (HEIGHT - getFontAscent(gameover)) / 2;
+    	setLocation(gameover, x, y);
+    	add(window, gameover);
+    }
 
+    if (bricks == 0)
+    {
+    	double x, y;
+    	
+    	GLabel gamewin = newGLabel("YOU WIN!!!");
+    	setFont(gamewin, "SansSerif-48");
+    	setColor(gamewin, "GREEN");
+    	x = (WIDTH - getWidth(gamewin)) / 2;
+    	y = (HEIGHT - getFontAscent(gamewin)) / 2;
+    	setLocation(gamewin, x, y);
+    	add(window, gamewin);
+    }
     // wait for click before exiting
     waitForClick();
 
