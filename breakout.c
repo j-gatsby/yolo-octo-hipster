@@ -82,8 +82,8 @@ int main(void)
     int points = 0;
     
     // initial velocity
-    double velocityX = drand48() + 2;
-    double velocityY = drand48() + 2;
+    double velocityX = (drand48() + 2);
+    double velocityY = (drand48() + 2);
 
     // wait for click before starting
     waitForClick();
@@ -107,7 +107,7 @@ int main(void)
                 setLocation(paddle, x, (HEIGHT - GAP));
             }
         }
-        
+        /*
         // set paddle color as indicator of lives remaining 
 		if (lives == 3)
 		{
@@ -122,7 +122,7 @@ int main(void)
 			setColor(paddle, "RED");
 		}
 		setFilled(paddle, true);
-        
+        */
         // add diagonal movement to ball
 		move(ball, velocityX, velocityY);
 		
@@ -137,11 +137,15 @@ int main(void)
         	velocityY = -velocityY;
         }
         // linger before moving again
-        pause(50);
+        pause(10);
         
         if (getY(ball) + RADIUS * 2 >= HEIGHT)
         {
         	lives--;
+        	// re-seed pseudorandom number generator
+    		//srand48(time(NULL));
+    		// re-assign pseudorandom number to velocityY
+    		//velocityY = drand48() + 2;
         	setLocation(paddle,((WIDTH/2) - (PWIDTH/2)), (HEIGHT - GAP));
         	setLocation(ball, WIDTH/2 - RADIUS, HEIGHT/2 - RADIUS);
         	waitForClick();
@@ -155,6 +159,10 @@ int main(void)
 		    {
 		    	velocityY = -velocityY;
 		    }
+		    else if (object == label)
+		    {
+		    	velocityY = -velocityY;
+		    	velocityY = -velocityY;	    }
 		    
 		   else if (strcmp(getType(object), "GRect") == 0)
 		   {
